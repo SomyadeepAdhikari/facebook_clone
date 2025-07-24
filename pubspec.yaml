@@ -1,0 +1,53 @@
+name: facebook_clone
+description: "A Facebook clone Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # firebase
+  cloud_firestore: ^5.6.11
+  firebase_auth: ^5.6.2
+  firebase_storage: ^12.4.9
+  firebase_core: ^3.15.1
+
+  # birthday date picker
+  flutter_holo_date_picker: ^2.0.0
+
+  # for providing icons
+  font_awesome_flutter: ^10.8.0
+
+  # formating dates and times
+  jiffy: ^6.4.3
+
+  # for generating ids for users
+  uuid: ^4.5.1
+
+  # state management
+  flutter_riverpod: ^2.6.1
+
+  # show toast meassages
+  fluttertoast: ^8.2.12
+
+  # for showing images and videos
+  image_picker: ^1.1.2
+  video_player: ^2.10.0
+
+  # for showing stories
+  story_view: ^0.16.6
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
