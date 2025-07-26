@@ -10,8 +10,8 @@ class RoundButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.label,
-    required this.color,
-    required this.height,
+    this.color = AppColors.lightBlueColor,
+    this.height = 50.0,
   });
 
   @override
