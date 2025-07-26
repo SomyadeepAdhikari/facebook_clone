@@ -1,3 +1,4 @@
+import 'package:facebook_clone/auth/presentation/screens/create_account_screen.dart';
 import 'package:facebook_clone/auth/utils/utils.dart';
 import 'package:facebook_clone/core/constants/constants.dart';
 import 'package:facebook_clone/core/widgets/round_button.dart';
@@ -39,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: Constants.defaultPadding,
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Image.asset('assets/icons/fb_logo.png', height: 60),
             const SizedBox(height: 20),
@@ -73,7 +74,15 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Column(
               children: [
-                RoundButton(onPressed: () {}, label: 'Create New Account',color: Colors.transparent,),
+                RoundButton(
+                  onPressed: () {
+                    Navigator.of(
+                      context,
+                    ).pushNamed(CreateAccountScreen.routeName);
+                  },
+                  label: 'Create New Account',
+                  color: Colors.transparent,
+                ),
                 Image.asset('assets/icons/meta.png', height: 50),
               ],
             ),

@@ -16,6 +16,8 @@ final _formKey = GlobalKey<FormState>();
 class CreateAccountScreen extends StatefulWidget {
   const CreateAccountScreen({super.key});
 
+  static const String routeName = '/create-account';
+
   @override
   State<CreateAccountScreen> createState() => _CreateAccountScreenState();
 }
@@ -137,7 +139,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                       keyboardType: TextInputType.visiblePassword,
                     ),
                     const SizedBox(height: 20),
-                    RoundButton(onPressed: () {}, label: 'Next')
+                    RoundButton(onPressed: () {}, label: 'Next'),
                   ],
                 ),
               ],
