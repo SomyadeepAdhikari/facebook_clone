@@ -1,6 +1,8 @@
 // pick image method
 
 import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 
 Future<File?> pickImage() async {
@@ -15,4 +17,15 @@ Future<File?> pickImage() async {
     image = File(file.path);
   }
   return image;
+}
+
+void showToastMessage({required String text}) {
+  Fluttertoast.showToast(
+    msg: text,
+    toastLength: Toast.LENGTH_LONG,
+    gravity: ToastGravity.BOTTOM,
+    fontSize: 16.0,
+    backgroundColor: Colors.black54,
+    textColor: Colors.white,
+  );
 }

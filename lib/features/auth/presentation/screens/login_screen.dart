@@ -1,22 +1,25 @@
-import 'package:facebook_clone/auth/presentation/screens/create_account_screen.dart';
-import 'package:facebook_clone/auth/utils/utils.dart';
+import 'package:facebook_clone/features/auth/presentation/screens/create_account_screen.dart';
+import 'package:facebook_clone/features/auth/providers/auth_provider.dart';
+import 'package:facebook_clone/features/auth/utils/utils.dart';
 import 'package:facebook_clone/core/constants/constants.dart';
 import 'package:facebook_clone/core/widgets/round_button.dart';
 import 'package:facebook_clone/core/widgets/round_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final _formkey = GlobalKey<FormState>();
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -30,6 +33,22 @@ class _LoginScreenState extends State<LoginScreen> {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  Future<void> login() async {
+    if (_formkey.currentState!.validate()) {
+      _formkey.currentState!.save();
+      setState(() {
+        isLoading = true;
+      });
+      await ref.read(authProvider).signIn(
+            email: _emailController.text,
+            password: _passwordController.text,
+          );
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   @override
@@ -66,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     keyboardType: TextInputType.visiblePassword,
                   ),
                   const SizedBox(height: 20),
-                  RoundButton(onPressed: () {}, label: 'Login'),
+                  RoundButton(onPressed: login, label: 'Login'),
                   const SizedBox(height: 20),
                   Text('Forget Password?', style: TextStyle(fontSize: 14)),
                 ],
